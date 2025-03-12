@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "COSC 416 Assignment 5.sln"
+    "dotnet.defaultSolution": "COSC-416-Assignment-5.sln"
 }
