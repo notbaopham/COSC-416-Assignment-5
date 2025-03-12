@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class Ball : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class Ball : MonoBehaviour
         transform.localPosition = Vector3.zero;
         transform.rotation = Quaternion.identity;
         isBallActive = false;
+        GetComponent<TrailRenderer>().emitting = false;
     }
 
     public void FireBall()
@@ -51,5 +53,6 @@ public class Ball : MonoBehaviour
         rb.AddForce(transform.forward * ballLaunchSpeed, ForceMode.Impulse);
         rb.interpolation = RigidbodyInterpolation.Interpolate;
         isBallActive = true;
+        GetComponent<TrailRenderer>().emitting = true;
     }
 }
