@@ -28,7 +28,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         currentBrickCount = bricksContainer.childCount;
     }
 
-    private void OnDisable()
+    private void OnDisable() 
     {
         InputHandler.Instance.OnFire.RemoveListener(FireBall);
     }
