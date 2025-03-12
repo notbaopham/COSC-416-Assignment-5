@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
@@ -9,6 +10,8 @@ public class Ball : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform ballAnchor;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private ParticleSystem ps;
+    private ParticleSystem psi;
 
     private bool isBallActive;
 
@@ -22,6 +25,9 @@ public class Ball : MonoBehaviour
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
             rb.AddForce(directionToFire * returnSpeed, ForceMode.Impulse);
+            ContactPoint[] contacts = other.contacts;
+            // Also implemented particle on paddle hit
+            psi = Instantiate(ps, transform.position, Quaternion.identity);
         }
     }
 
