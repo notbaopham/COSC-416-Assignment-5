@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class Ball : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class Ball : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform ballAnchor;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private ParticleSystem ps;
+    private ParticleSystem psi;
 
     private bool isBallActive;
 
@@ -22,6 +26,9 @@ public class Ball : MonoBehaviour
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
             rb.AddForce(directionToFire * returnSpeed, ForceMode.Impulse);
+            ContactPoint[] contacts = other.contacts;
+            // Also implemented particle on paddle hit
+            psi = Instantiate(ps, transform.position, Quaternion.identity);
         }
     }
 
@@ -35,6 +42,7 @@ public class Ball : MonoBehaviour
         transform.localPosition = Vector3.zero;
         transform.rotation = Quaternion.identity;
         isBallActive = false;
+        GetComponent<TrailRenderer>().emitting = false;
     }
 
     public void FireBall()
@@ -45,5 +53,6 @@ public class Ball : MonoBehaviour
         rb.AddForce(transform.forward * ballLaunchSpeed, ForceMode.Impulse);
         rb.interpolation = RigidbodyInterpolation.Interpolate;
         isBallActive = true;
+        GetComponent<TrailRenderer>().emitting = true;
     }
 }
