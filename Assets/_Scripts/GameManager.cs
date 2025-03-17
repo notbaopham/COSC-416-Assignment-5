@@ -10,6 +10,8 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     [SerializeField] private Ball ball;
     [SerializeField] private Transform bricksContainer;
     [SerializeField] ParticleSystem ps;
+    [SerializeField] private CoinCounterUI coinCounter;
+    [SerializeField] private int score;
 
     private ParticleSystem psi;
 
@@ -43,6 +45,8 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     public void OnBrickDestroyed(Vector3 position)
     {
+        // Implement increase score
+        //IncreaseScore();
         // fire audio here
         // implement particle effect here
         psi = Instantiate(ps, position, Quaternion.identity);
@@ -75,5 +79,16 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         Time.timeScale = 1; // Restore time scale before loading the scene
         Debug.Log("Game Over! Exiting to Main Menu");
         SceneHandler.Instance.LoadMenuScene();
+    }
+    protected override void Awake()
+    {
+        base.Awake();
+        Cursor.visible = false; 
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    public void IncreaseScore()
+    {
+        score++;
+        coinCounter.UpdateScore(score);
     }
 }
