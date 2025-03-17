@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Brick : MonoBehaviour
@@ -15,6 +15,7 @@ public class Brick : MonoBehaviour
     private IEnumerator DestroyWithDelay()
     {
         yield return new WaitForSeconds(0.1f); // two physics frames to ensure proper collision
+        GameManager.Instance.IncreaseScore(); // ✅ This adds 1 to score
         GameManager.Instance.OnBrickDestroyed(transform.position);
         Destroy(gameObject);
     }
