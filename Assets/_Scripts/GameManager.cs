@@ -10,7 +10,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     [SerializeField] private Ball ball;
     [SerializeField] private Transform bricksContainer;
     [SerializeField] ParticleSystem ps;
-    [SerializeField] private CoinCounterUI coinCounter;
+    [SerializeField] private ScoreCounterUI coinCounter;
     [SerializeField] private int score;
 
     private ParticleSystem psi;

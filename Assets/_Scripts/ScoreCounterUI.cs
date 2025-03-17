@@ -3,7 +3,7 @@ using System.Collections;
 using DG.Tweening;
 using TMPro;
 
-public class CoinCounterUI : MonoBehaviour
+public class ScoreCounterUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI current;
     [SerializeField] private TextMeshProUGUI toUpdate;
