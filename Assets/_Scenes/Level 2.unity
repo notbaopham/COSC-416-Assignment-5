@@ -2311,6 +2311,7 @@ MonoBehaviour:
   gameOverUI: {fileID: 985719492}
   ball: {fileID: 4561635119993004754}
   bricksContainer: {fileID: 796630123}
+  ps: {fileID: 1699239066113998081, guid: cd9351e2e83a50b42a6bf865ef92e3a2, type: 3}
 --- !u!1001 &1708692028
 PrefabInstance:
   m_ObjectHideFlags: 0
