@@ -80,12 +80,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         Debug.Log("Game Over! Exiting to Main Menu");
         SceneHandler.Instance.LoadMenuScene();
     }
-    protected override void Awake()
-    {
-        base.Awake();
-        Cursor.visible = false; 
-        Cursor.lockState = CursorLockMode.Locked;
-    }
+
     public void IncreaseScore()
     {
         score++;
